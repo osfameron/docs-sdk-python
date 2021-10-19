@@ -111,7 +111,7 @@ class ManagingConnections(object):
       bucket = cluster.bucket("travel-sample")
 
       # Same API as Bucket, but completely async with asyncio Futures
-      from acouchbase.bucket import Bucket
+      from acouchbase.cluster import Bucket
       async_bucket=Bucket("couchbase://localhost/default")
 
       cluster.disconnect()
@@ -119,7 +119,7 @@ class ManagingConnections(object):
 
       print("reactivecluster")
       #tag::reactivecluster[]
-      from acouchbase.bucket import Bucket
+      from acouchbase.cluster import Bucket
       cluster = Cluster("couchbase://localhost", ClusterOptions(PasswordAuthenticator("username", "password")),bucket_class=Bucket)
       bucket = cluster.bucket("travel-sample")
 
@@ -156,4 +156,4 @@ example = ManagingConnections()
 example.test_simpleconnect()
 example.test_multinodeconnect()
 example.test_connectionstringparams()
-# example.test_async() # TODO: DOC-9100
+example.test_async() # TODO: DOC-9100
